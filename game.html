@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container{
+            display: flex;
+            flex-direction: rows;
+            justify-content: space-evenly;
+        }
+        img{
+            border: 4px solid black;
+            border-radius: 130%;
+            width: 140px;
+            height: 140px;
+
+        }
+        input{
+            /* border: none; */
+        }
+        .inp{
+            /* border: 2px solid black; */
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        #res{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">LETS PLAY STONE PAPER SCISSOR</h1>
+    <div class="container">
+    <div id="imgp"><img src="paper.jpg" alt="" width="100px" height="100px"></div>
+    <div id="imgsc"><img src="scissor.jpg" alt="" width="100px" height="100px"></div>
+    <div id="imgst"><img src="stone.jpg" alt="" width="100px" height="100px"></div>
+    </div>
+    <br><br>
+    <div class="inp">
+       <span>YOU: <SPAN id="YOU"></SPAN></span>
+       <span>COMPUTER:<SPAn id="comp"></SPAn>
+       </span>
+    </div>
+    <div id="res">
+        <p id="msg"></p>
+        you: <span id="totalu"></span>
+        computer:<span id="totalc"></span>
+    </div>
+    <script>
+        let c=0;
+        let you=0;
+        function resultmsg(x,y){
+           if ((x=='scissor')&&(y=='paper')){
+            document.getElementById("msg").innerText="you win computer lose"
+
+           }
+           else if((x=='scissor')&&(y=='stone'))
+           {
+            document.getElementById("msg").innerText="you lose computer win" 
+           
+           }
+           else if((x=='paper')&&(y=='scissor')){
+            document.getElementById("msg").innerText="you lose computer win"
+    
+           }
+           else if((x=='paper')&&(y=='stone')){
+            document.getElementById("msg").innerText="you win computer lose"
+            
+           }
+           else if((x=='stone')&&(y=='scissor')){
+            document.getElementById("msg").innerText="you win computer lose"
+            
+           }
+           else if((x=='stone')&&(y=='paper')){
+            document.getElementById("msg").innerText="you lose computer win"
+    
+           }
+           else if(x==y){
+            document.getElementById("msg").innerText="its a draw"
+           }
+        }
+        let computer=document.getElementById("comp");
+        computer.innerText=" ";
+        let user=document.getElementById("YOU")
+        let paper=document.getElementById("imgp");
+        let scissor=document.getElementById("imgsc");
+        let stone=document.getElementById("imgst");
+        let list_res=["stone","paper","scissor"]
+        let tu=document.getElementById("totalu")
+        let tc=document.getElementById("totalc")
+        paper.addEventListener("click",()=>{
+          user.innerText="paper";
+          computer.innerText=list_res[Math.floor(Math.random()*list_res.length)]
+          resultmsg(user.innerText,computer.innerText)
+          if(document.getElementById("msg").innerText=="you lose computer win"){
+            c++
+            }
+          else if(document.getElementById("msg").innerText=="you win computer lose"){
+            you++
+          }
+          tu.innerText=you
+          tc.innerText=c
+        })
+        scissor.addEventListener("click",()=>{
+          user.innerText="scissor";
+          computer.innerText=list_res[Math.floor(Math.random()*list_res.length)]
+          resultmsg(user.innerText,computer.innerText)
+          if(document.getElementById("msg").innerText=="you lose computer win"){
+            c++
+            }
+          else if(document.getElementById("msg").innerText=="you win computer lose"){
+            you++
+          }
+          tu.innerText=you
+          tc.innerText=c
+        })
+        stone.addEventListener("click",()=>{
+          user.innerText="stone";
+          computer.innerText=list_res[Math.floor(Math.random()*list_res.length)]
+          resultmsg(user.innerText,computer.innerText)
+          if(document.getElementById("msg").innerText=="you lose computer win"){
+            c++
+            }
+          else if(document.getElementById("msg").innerText=="you win computer lose"){
+            you++
+          }
+          tu.innerText=you
+          tc.innerText=c
+        })
+    </script>
+</body>
+</html>
